@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="icon">
+        <img src="/images/logo.png" height="40px" />
+      </div>
+      <div class="controlls">
+        <select name="currency" id="inr">
+          <option value="INR" default>INR</option>
+        </select>
+        <select name="coin" id="coin">
+          <option value="BTC" default>BTC</option>
+          <option value="ETH" default>ETH</option>
+          <option value="USDT" default>USDT</option>
+        </select>
+        <button>BUY ETH</button>
+      </div>
+      <div class="social">
+        <div class="timer">
+          <div class="activity-indicator">
+            <div class="progress-bar"></div>
+            <div class="countdown" id="countdown">60</div>
+          </div>
+        </div>
+        <a href="https://hodlinfo.com/connect/telegram">
+          <div class="telegram">
+            <img
+              class="tele"
+              src="/images/telegram.png"
+              height="16px"
+              width="16px"
+            />
+            <p>Connect Telegram</p>
+          </div>
+        </a>
+        <label class="switch">
+          <input type="checkbox" />
+          <span class="slider"></span>
+        </label>
+        <div class="mode"></div>
+      </div>
+    </div>
+
+    <div class="details">
+      <p>Best Price to Trade</p>
+      <div class="calculations">
+        <div class="flex-one">
+          <p class="value">0.29 %</p>
+          <p class="desc">5 Mins</p>
+        </div>
+        <div class="flex2">
+          <p class="value">0.31 %</p>
+          <p class="desc">1 Hour</p>
+        </div>
+        <div class="flex3">
+          <p class="mainvalue">₹ 2, 08, 439</p>
+          <p class="desc">Average ETH/INR net price including commission</p>
+        </div>
+        <div class="flex4">
+          <p class="value">1.11 %</p>
+          <p class="desc">1 Day</p>
+        </div>
+        <div class="flex5">
+          <p class="value">4.27 %</p>
+          <p class="desc">7 Days</p>
+        </div>
+      </div>
+
+      <div class="table_container">
+        <table class="table">
+          <thead>
+            <th>#</th>
+            <th>Name of Coin</th>
+            <th>Last Price</th>
+            <th>Buy Price</th>
+            <th>Sell Price</th>
+            <th>Volume</th>
+            <th>Base Unit</th>
+          </thead>
+          <% for(let item of data){ %>
+            <div class="trow" style="margin-bottom: 10px; margin-top: 10px;">
+              <tr class="table_row" style="margin-bottom: 40px">
+                <td><%= item.id %></td>
+                <td><%= item.name %></td>
+                <td><%= item.last %></td>
+                <td><%= item.buy %></td>
+                <td><%= item.sell %></td>
+                <td><%= item.volume %></td>
+                <td><%= item.base_unit %></td>
+              </tr>
+            </div>
+          <% } %>
+        </table>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-item">
+        <p>Copyright © 2019</p>
+        <p>HodlInfo.com</p>
+      </div>
+      <p>Support</p>
+    </div>
+    <div class="add_to_home">
+      <a class="add_to_home_btn">Add hodlinfo to Home Screen</a>
+    </div>
+
+    <script>
+      // Countdown Timer
+      let countdown = 60;
+      const countdownElement = document.getElementById("countdown");
+
+      function updateCountdown() {
+        countdown--;
+        if (countdown < 0) {
+          countdown = 60;
+        }
+        countdownElement.textContent = countdown;
+      }
+
+      setInterval(updateCountdown, 1000); // Update countdown every second
+    </script>
+  </body>
+</html>
