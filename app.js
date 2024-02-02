@@ -63,6 +63,7 @@ CryptoCoins
     .then(res => {
         app.listen(5000, port => {
             console.log("Listening to port 5000");
+            console.log("Click on http://localhost:5000");
         })
     })
     .catch(err => {
